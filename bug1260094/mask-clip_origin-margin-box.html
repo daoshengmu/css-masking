@@ -20,23 +20,24 @@
 
       div.inner {
         background-color: red;
-        -webkit-mask-image: url(50x50-opaque-blue.svg);
+        margin: 30px 30px 30px 30px;
+        -webkit-mask-image: url(0_80e74_9f303e3d_M.png);
+        -webkit-mask-size: 20%;
       }
 
-      #space {
+      #mask-origin {
         -webkit-mask-origin: margin-box;
+        -webkit-mask-repeat: no-repeat;
       }
-      #space-x {
-        -webkit-mask-origin: content-box;
-      }
-      #space-y {
-        -webkit-mask-origin: border-box;
+
+      #mask-clip {
+        -webkit-mask-clip: margin-box;
+        -webkit-mask-repeat: no-repeat;
       }
     </style>
   </head>
   <body>
-    <div class="outer"><div class="inner" id="space"></div></div>
-    <div class="outer"><div class="inner" id="space-x"></div></div>
-    <div class="outer"><div class="inner" id="space-y"></div></div>
+    <div class="outer"><div class="inner" id="mask-origin"></div></div>
+    <div class="outer"><div class="inner" id="mask-clip"></div></div>
   </body>
 </html>
