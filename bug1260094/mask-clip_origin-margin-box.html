@@ -2,12 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>CSS Masking: mask-repeat: repeated mask layer image</title>
-    <link rel="author" title="Astley Chen" href="mailto:aschen@mozilla.com">
+    <title>CSS Masking: mask-origin/mask-clip: margin-box</title>
+    <link rel="author" title="Daosheng Mu" href="mailto:dmu@mozilla.com">
     <link rel="author" title="Mozilla" href="https://www.mozilla.org">
     <link rel="help" href="https://www.w3.org/TR/css-masking-1/#the-mask-repeat">
-    <link rel="match" href="mask-repeat-2-ref.html">
-    <meta name="assert" content="Test checks whether repeated mask layer works correctly or not.">
+    <meta name="assert" content="Test checks whether margin-box for mask-origin/mask-clip works correctly or not.">
     <style type="text/css">
       div {
         width: 128px;
@@ -19,10 +18,13 @@
       }
 
       div.inner {
-        background-color: red;
-        margin: 30px 30px 30px 30px;
+        background-image: url(firefox.jpeg);
+        background-size: 100% 100%;
+        background-origin: margin-box;
+        border: 1px dotted red;
+        margin-left: 20px;
         -webkit-mask-image: url(0_80e74_9f303e3d_M.png);
-        -webkit-mask-size: 20%;
+        -webkit-mask-size: 100% 100%;
       }
 
       #mask-origin {
