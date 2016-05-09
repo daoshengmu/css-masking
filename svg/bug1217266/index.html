@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+  <head>
+    <style>
+      h1.local  { filter: url(#shadow); }
+      h1.remote { filter: url(filters.svg#shadow); }
+    </style>
+  </head>
+  <body>
+    <h1 class="local">Local</h1>
+    <h1 class="remote">Remote</h1>
+    <svg>
+      <filter id="shadow">
+        <feGaussianBlur in="SourceAlpha" stdDeviation="4" result="blur"/>
+        <feFlood flood-color="red" result="red">
+          <animate attributeName="flood-color"
+            values="red; blue; green; yellow; red" dur="2s"
+            repeatCount="indefinite"/>
+        </feFlood>
+        <feComposite in="red" in2="blur" operator="in" result="colorBlur"/>
+        <feMerge>
+          <feMergeNode in="colorBlur"/>
+          <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+      </filter>
+    </svg>
+  </body>
+</html>

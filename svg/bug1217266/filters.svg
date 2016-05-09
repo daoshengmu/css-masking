@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+  <filter id="shadow">
+    <feGaussianBlur in="SourceAlpha" stdDeviation="4" result="blur"/>
+    <feFlood flood-color="red" result="red">
+      <animate attributeName="flood-color"
+        values="red; blue; green; yellow; red" dur="2s"
+        repeatCount="indefinite"/>
+    </feFlood>
+    <feComposite in="red" in2="blur" operator="in" result="colorBlur"/>
+    <feMerge>
+      <feMergeNode in="colorBlur"/>
+      <feMergeNode in="SourceGraphic"/>
+    </feMerge>
+  </filter>
+</svg>

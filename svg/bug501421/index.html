@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="700" onload="init();">
+  <title>Test SVGSVGElement::getIntersectionList()</title>
+  <script type="text/javascript">//<![CDATA[
+
+function init() {
+  window.inner = document.getElementById("inner");
+  window.bounds = document.getElementById("bounds");
+  window.tester = document.getElementById("tester");
+  reset();
+}
+
+function reset() {
+  // reset fill of all graphics to red:
+  var descendants = inner.querySelectorAll("path");
+  for (var i = 0; i < descendants.length; ++i) {
+    descendants[i].setAttribute("fill", "red");
+  }
+}
+
+function move(evt) {
+	bounds.setAttribute("x", evt.clientX-25);
+	bounds.setAttribute("y", evt.clientY-25);
+
+  reset();
+
+	var intersectionList = inner.getIntersectionList(bounds.getBBox(), null);
+	if (!intersectionList || intersectionList.length < 1) {
+	  return;
+	}
+
+  for (var i = 0; i < intersectionList.length; ++i) {
+    intersectionList[i].setAttribute("fill", "lime");
+  }
+}
+
+document.onmousemove = move;
+
+  //]]></script>
+  <defs>
+    <filter id="blur" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="15"/>
+    </filter>
+    <marker id="mark" markerWidth="20" markerHeight="20" refX="10" refY="10" markerUnits="userSpaceOnUse">
+      <circle cx="10" cy="10" r="10"/>
+    </marker>
+    <clipPath id="cp">
+      <rect x="15" y="15" width="20" height="20"/>
+    </clipPath>
+    <mask id="mask" x="0" y="0" width="50" height="50">
+      <rect x="15" y="15" width="20" height="20" fill="white"/>
+    </mask>
+  </defs>
+  <svg id="inner" x="50" y="50" width="700" height="700" viewBox="0 0 350 350">
+    <g transform="translate(50,50)">
+      <path d="M25,0 L50,25 L25,50 L0,25 Z"/>
+    </g>
+    <g transform="translate(150,50) rotate(45, 25, 25)">
+      <path d="M25,0 L50,25 L25,50 L0,25 Z"/>
+    </g>
+    <g transform="translate(250,50)">
+      <path d="M25,0 L50,25 L25,50 L0,25 Z" filter="url(#blur)"/>
+    </g>
+    <g transform="translate(50,150)">
+      <path d="M25,0 L50,25 L25,50 L0,25 Z" stroke="black" stroke-width="20"/>
+    </g>
+    <g transform="translate(150,150)">
+      <path d="M25,0 L50,25 L25,50 L0,25 Z" stroke="black" stroke-width="20" pointer-events="visibleFill"/>
+    </g>
+    <g transform="translate(250,150)">
+      <path d="M25,0 L50,25 L25,50 L0,25 Z" stroke="black" stroke-width="20" pointer-events="none"/>
+    </g>
+    <g transform="translate(50,250)">
+      <path d="M25,0 L50,25 L25,50 L0,25 Z" stroke-width="20" style="marker: url(#mark);"/>
+    </g>
+    <g transform="translate(150,250)">
+      <path d="M25,0 L50,25 L25,50 L0,25 Z" style="clip-path:url(#cp)"/>
+    </g>
+    <g transform="translate(250,250)">
+      <path d="M25,0 L50,25 L25,50 L0,25 Z" style="mask:url(#mask)"/>
+    </g>
+  </svg>
+  <rect id="bounds" width="50" height="50" style="fill:none;" stroke="black"/>
+</svg>
