@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+a:focus, a:active {
+    color: green;
+}
+div {
+  width: 100px;
+  height: 100px;
+  background-color: yellow;
+}
+</style>
+</head>
+<body>
+  <p>SVG: </p>
+  <svg xmlns="http://www.w3.org/2000/svg" overflow="visible">
+    <g id="mySVG" tabIndex="0">
+      <rect width="100" height="100" fill="yellow"/>
+    </g>
+  </svg>
+  <p>Click the buttons to give focus and/or remove focus from the link above.</p>
+  <input type="button" onclick="getSVGfocus()" value="Get SVG focus">
+  <input type="button" onclick="loseSVGfocus()" value="Lose SVG focus">
+  <p>DIV: </p>
+  <div id="myDIV" tabIndex="0">
+  </div>
+  <p>Click the buttons to give focus and/or remove focus from the link above.</p>
+  <input type="button" onclick="getDIVfocus()" value="Get DIV focus">
+  <input type="button" onclick="loseDIVfocus()" value="Lose DIV focus">
+<script>
+function getSVGfocus() {
+  document.getElementById("mySVG").focus();
+}
+
+function loseSVGfocus() {
+  document.getElementById("mySVG").blur();
+}
+
+function getDIVfocus() {
+  document.getElementById("myDIV").focus();
+}
+
+function loseDIVfocus() {
+  document.getElementById("myDIV").blur();
+}
+</script>
+
+</body>
+</html>
