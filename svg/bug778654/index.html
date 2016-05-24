@@ -4,20 +4,27 @@
     <button>before</button>
     <br>
     <svg width="700" height="600">
+      <foreignObject x="50" y="40" width="200" height="60"
+                   requiredExtensions="http://www.w3.org/1999/xhtml" tabindex="3">
+        <!-- XHTML content goes here -->
+        <body xmlns="http://www.w3.org/1999/xhtml">
+          <p>Here is a paragraph that requires word wrap</p>
+        </body>
+      </foreignObject>
       <rect tabindex="2" x="50" y="120" width="150" height="80" style="fill:red;stroke:pink;stroke-width:5;opacity:0.5"/>
-      <text x="250" y="150">
+      <text x="250" y="150" tabindex="2">
         Index: 2
       </text>
       <rect tabindex="0" x="50" y="220" width="150" height="80" style="fill:blue;stroke:pink;stroke-width:5;opacity:0.5"/>
-      <text x="250" y="250">
+      <text x="250" y="250" tabindex="0">
         Index: 0; Normal order
       </text>
       <rect tabindex="-1" x="50" y="320" width="150" height="80" style="fill:green;stroke:pink;stroke-width:5;opacity:0.5"/>
-      <text x="250" y="350">
+      <text x="250" y="350" tabindex="-1">
         Index: -1; Not receive focus
       </text>
       <rect tabindex="1" x="50" y="420" width="150" height="80" style="fill:yellow;stroke:pink;stroke-width:5;opacity:0.5"/>
-      <text x="250" y="450">
+      <text x="250" y="450" tabindex="1">
         Index: 1
       </text>
     </svg>
